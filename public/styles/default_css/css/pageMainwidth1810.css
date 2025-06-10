@@ -57,7 +57,7 @@ div.actionMainselected {
         }
         div.scroll {
             overflow-y: scroll; 
-            height:280; 
+            height:380; 
 
         }
 
@@ -277,7 +277,7 @@ div.actionMainselected {
         #showmood {
             width: 93%;
 
-            min-height: 350px;
+            
             
             margin-left: auto;
             margin-right: auto;
@@ -370,3 +370,4 @@ margin-right: auto;
             
         }
 }
+

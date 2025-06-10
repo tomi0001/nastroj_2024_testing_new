@@ -1067,7 +1067,7 @@ function changeArrayFormAddProduct() {
     for (var i=0;i < array.length;i++) {
         var id = $('input[name^="idSubstance"]').eq(i).val();
         if (arraySubstanceProduct.find(element => element == id )) {
-alert('dddd');
+
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'idSubstance2[]\' value='" +  $('input[name^="idSubstance"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'typeMgUg2[]\' value='" + $('select[name^="typeMgUg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
@@ -1549,4 +1549,26 @@ function settingsUserSubmit() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })  
+}
+function LoadCssColor(url) {
+    $.ajax({
+        url : url,
+            method : "get",
+            data :  "css=" +  $('select[name="css"]').val(),
+            dataType : "html",
+    })
+    .done(function(response) {
+
+
+
+            //alert(response);
+          
+         $('select[name="css-color"]').html(response);
+
+
+
+    })
+    .fail(function() {
+        alert("Wystąpił błąd");
+    });   
 }

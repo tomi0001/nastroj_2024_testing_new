@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use App\Models\Mood as SleepModel;
+use App\Models\Sleep_type;
 use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
 use Hash;
@@ -50,16 +51,13 @@ class Sleep {
     }
     public function addSleep(Request $request) {
         $Sleep = new SleepModel;
-        $Sleep->date_start = $request->get("dateStart") . " "  . $request->get("timeStart") .   ":00";
-        $Sleep->date_end = $request->get("dateEnd") . " "  . $request->get("timeEnd") .   ":00";
+        $idSleep = $Sleep->addSleep($request);
+        /*
+            Update januar 2025 
 
-        if ($request->get("howWorking") != "") {
-            $Sleep->epizodes_psychotik = $request->get("howWorking");
-        }
-        $Sleep->what_work = str_replace("\n", "<br>", $request->get("whatSleep"));
-        $Sleep->id_users = Auth::User()->id;
-        $Sleep->type = "sleep";
-        $Sleep->save();
+        */
+        $SleepType = new Sleep_type;
+        $SleepType->addSleepPercent($request,$idSleep);
 
     }
 }

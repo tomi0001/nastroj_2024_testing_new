@@ -156,7 +156,7 @@ class SearchMood {
      public function createQuestionGroupDay(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $moodModel->createQuestionGroupDay($this->startDay);
+         $moodModel->createQuestionGroupDay($this->startDay,$request);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
@@ -241,6 +241,7 @@ class SearchMood {
          $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $moodModel->sleepSelect();
          $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
+         $moodModel->whereTypeSleeps($request);
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }
